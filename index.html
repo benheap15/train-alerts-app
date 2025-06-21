@@ -161,7 +161,7 @@
 
                 const subscription = await registration.pushManager.subscribe(options);
                 console.log('User is subscribed:', subscription);
-                fetch('http://localhost:3000/subscribe', {
+                fetch('https://trainalertsbackend.onrender.com', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
