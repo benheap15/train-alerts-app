@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Train Alert Push Notifications&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="manifest" href="/manifest.json"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f0f2f5;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 500px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 90%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #2c3e50;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>p {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #007bff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: background-color 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #0056b3;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button:disabled {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #cccccc;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: not-allowed;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#statusMessage {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e2f0cb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #4CAF50;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#errorMessage {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f8d7da;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #721c24;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="apple-touch-icon" href="/icons/icon-192x192.png"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-status-bar-style" content="black"&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Train Alert Notifications&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Receive push notifications for train delays and cancellations.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;Important for iPhone users:&lt;/strong&gt; You must first add this website to your Home Screen from Safari's Share menu to enable notifications. After adding, launch the app from the Home Screen.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="enableNotifications"&gt;Enable Train Alerts&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="statusMessage"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="errorMessage"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const enableNotificationsButton = document.getElementById('enableNotifications');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const statusMessage = document.getElementById('statusMessage');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const errorMessage = document.getElementById('errorMessage');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showStatus(message, isError = false) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (isError) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>errorMessage.textContent = message;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>errorMessage.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>statusMessage.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>statusMessage.textContent = message;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>statusMessage.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>errorMessage.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function registerServiceWorker() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!('serviceWorker' in navigator)) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStatus('Service Workers are not supported by this browser.', true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const registration = await navigator.serviceWorker.register('/sw.js');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log('Service Worker registered with scope:', registration.scope);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStatus('Service Worker registered successfully.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return registration;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (error) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.error('Service Worker registration failed:', error);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (window.location.protocol !== 'https:' &amp;&amp; window.location.hostname !== 'localhost') {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showStatus('Service Worker registration failed. This feature requires HTTPS or localhost. Please deploy to a live server for full functionality.', true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showStatus(`Service Worker registration failed: ${error.message}.`, true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function requestNotificationPermission(registration) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!('PushManager' in window)) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStatus('Push Notifications are not supported by this browser.', true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!registration) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStatus('Service Worker not registered, cannot request push permission.', true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const permissionResult = await Notification.requestPermission();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (permissionResult === 'granted') {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>console.log('Notification permission granted.');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showStatus('Notification permission granted. You are ready to receive alerts!');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// Subscribe the user for push notifications</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>await subscribeUser(registration);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>console.warn('Notification permission denied.');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showStatus('Notification permission denied. You will not receive alerts.', true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (error) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.error('Error requesting notification permission:', error);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStatus(`Error requesting permission: ${error.message}.`, true);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function subscribeUser(registration) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const applicationServerKey = 'YOUR_PUBLIC_VAPID_KEY_HERE'; // Replace with your actual VAPID public key</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const options = {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>userVisibleOnly: true,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>applicationServerKey: urlBase64ToUint8Array(applicationServerKey)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const subscription = await registration.pushManager.subscribe(options);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log('User is subscribed:', subscription);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStatus('Successfully subscribed for push notifications!');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// In a real app, you would send this 'subscription' object to your backend server.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Your server would then use this to send push messages.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Example: sendSubscriptionToServer(subscription);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// For demonstration, we'll simulate a push after subscription</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// <span class="Apple-converted-space">    </span>new Notification('Test Train Alert', {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// <span class="Apple-converted-space">        </span>body: 'Your subscription is active!',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// <span class="Apple-converted-space">        </span>icon: '/icons/icon-192x192.png'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// <span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// }, 3000);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (error) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.error('Failed to subscribe the user:', error);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStatus(`Failed to subscribe for push notifications: ${error.message}.`, true);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Utility function to convert VAPID key</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function urlBase64ToUint8Array(base64String) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const padding = '='.repeat((4 - base64String.length % 4) % 4);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const base64 = (base64String + padding)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>.replace(/\-/g, '+')</p>
+<p class="p1"><span class="Apple-converted-space">                </span>.replace(/_/g, '/');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const rawData = window.atob(base64);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const outputArray = new Uint8Array(rawData.length);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = 0; i &lt; rawData.length; ++i) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>outputArray[i] = rawData.charCodeAt(i);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return outputArray;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>enableNotificationsButton.addEventListener('click', async () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>enableNotificationsButton.disabled = true; // Disable button to prevent multiple clicks</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showStatus('Attempting to enable notifications...');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const registration = await registerServiceWorker();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (registration) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>await requestNotificationPermission(registration);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>enableNotificationsButton.disabled = false; // Re-enable button</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Check current notification status on load</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if ('Notification' in window) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (Notification.permission === 'granted') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStatus('Notifications are already allowed for this site.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>enableNotificationsButton.textContent = 'Notifications Enabled';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>enableNotificationsButton.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Attempt to register SW and subscribe in case it's not</p>
+<p class="p1"><span class="Apple-converted-space">                </span>registerServiceWorker().then(reg =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (reg) subscribeUser(reg);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (Notification.permission === 'denied') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStatus('Notifications are blocked for this site. Please enable them in your browser settings if you wish to receive alerts.', true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>enableNotificationsButton.textContent = 'Notifications Blocked';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>enableNotificationsButton.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else { // 'default'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showStatus('Click "Enable Train Alerts" to receive notifications.');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showStatus('Your browser does not support Notifications.', true);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>enableNotificationsButton.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// For testing the manifest and service worker in the browser's DevTools:</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// You'll need to go to Application -&gt; Manifest and Application -&gt; Service Workers</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// in Chrome/Edge DevTools or Storage -&gt; Service Workers in Firefox DevTools.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Also, create a folder named 'icons' in the same directory as this file</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// and put images named 'icon-192x192.png' and 'icon-512x512.png' inside.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
